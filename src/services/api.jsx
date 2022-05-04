@@ -30,9 +30,9 @@ export const getActorsMovie = async movieId => {
   return response.data;
 };
 
-export const getMoviesReviews = async (movieId, page) => {
+export const getMoviesReviews = async movieId => {
   const response = await axios.get(
-    `/movie/${movieId}/reviews?api_key=be62f5641064cac309cf00d464856dbe&page=${page}`
+    `/movie/${movieId}/reviews?api_key=be62f5641064cac309cf00d464856dbe`
   );
   return response.data;
 };

@@ -1,10 +1,8 @@
-import { Outlet } from 'react-router-dom';
-
 export const MoviesPage = () => {
   return (
-    <>
-      <p>Это MoviesPage</p>
-      <Outlet />
-    </>
+    <form>
+      <input type="text" />
+      <button></button>
+    </form>
   );
 };

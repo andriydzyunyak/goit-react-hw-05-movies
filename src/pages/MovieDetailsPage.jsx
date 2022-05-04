@@ -25,15 +25,19 @@ export const MovieDetailsPage = () => {
       {movie && (
         <>
           <img
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
             alt={movie.title}
           />
           <h2>{movie.title}</h2>
           <p>User score: {movie.popularity}</p>
           <p>Overview</p>
           <p>{movie.overview}</p>
-          <p>Genres</p>
-          {/* <p>{movie.genres}</p> */}
+          <p>
+            Genres:
+            {movie.genres.map(genre => (
+              <p key={genre.id}>{genre.name}</p>
+            ))}
+          </p>
         </>
       )}
       <hr />
@@ -41,9 +45,9 @@ export const MovieDetailsPage = () => {
       {movie && (
         <>
           <p>Additional information</p>
-          <Link to={`/movies/${movie.id}/cast`}>Cast</Link>
+          <Link to="cast">Cast</Link>
           <br />
-          <Link to={`/movies/${movie.id}/reviews`}>Reviews</Link>
+          <Link to="reviews">Reviews</Link>
         </>
       )}
       <hr />
