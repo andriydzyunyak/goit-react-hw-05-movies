@@ -20,12 +20,10 @@ export const HomePage = () => {
   }, []);
 
   const Result = trendingMovies => {
-    const moviesArray = trendingMovies.results.map(
-      ({ id, original_title }) => ({
-        id,
-        original_title,
-      })
-    );
+    const moviesArray = trendingMovies.results.map(({ id, title }) => ({
+      id,
+      title,
+    }));
     setMovies(moviesArray);
   };
 
@@ -36,7 +34,7 @@ export const HomePage = () => {
         <ul>
           {movies.map(movie => (
             <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`}>{movie.original_title}</Link>
+              <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
             </li>
           ))}
         </ul>

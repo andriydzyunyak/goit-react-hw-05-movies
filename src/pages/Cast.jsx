@@ -11,9 +11,7 @@ export const Cast = () => {
     async function fetchActorsMovie() {
       try {
         const movieActors = await API.getActorsMovie(movieId);
-        console.log(movieActors);
         Result(movieActors);
-        //setActors(movieActors);
       } catch (error) {
         console.log(error);
       }

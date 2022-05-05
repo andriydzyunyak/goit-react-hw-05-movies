@@ -9,9 +9,9 @@ export const getTrandingMovies = async () => {
   return response.data;
 };
 
-export const searchMovies = async (query, page) => {
+export const searchMovies = async query => {
   const response = await axios.get(
-    `/search/movie?api_key=be62f5641064cac309cf00d464856dbe&query=${query}&page=${page}`
+    `/search/movie?api_key=be62f5641064cac309cf00d464856dbe&query=${query}`
   );
   return response.data;
 };

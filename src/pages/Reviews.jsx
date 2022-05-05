@@ -32,17 +32,14 @@ export const Reviews = () => {
   };
 
   return (
-    <>
-      {reviews && (
-        <ul>
-          {reviews.map(review => (
-            <li key={review.id}>
-              <p>Author: {review.author}</p>
-              <p>{review.content}</p>
-            </li>
-          ))}
-        </ul>
-      )}
-    </>
+    <ul>
+      {reviews &&
+        reviews.map(review => (
+          <li key={review.id}>
+            <p>Author: {review.author}</p>
+            <p>{review.content}</p>
+          </li>
+        ))}
+    </ul>
   );
 };

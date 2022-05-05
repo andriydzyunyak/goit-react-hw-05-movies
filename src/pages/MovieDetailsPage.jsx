@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
 import * as API from 'services/api';
+import { BackLink } from 'components/BackLink/BackLink';
 
 export const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -22,6 +23,7 @@ export const MovieDetailsPage = () => {
 
   return (
     <>
+      <BackLink href="/" label="Go back" />
       {movie && (
         <>
           <img
