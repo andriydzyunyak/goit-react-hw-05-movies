@@ -3,7 +3,7 @@ import { Link, Outlet, useParams } from 'react-router-dom';
 import * as API from 'services/api';
 import { BackLink } from 'components/BackLink/BackLink';
 
-export const MovieDetailsPage = () => {
+export default function MovieDetailsPage() {
   const { movieId } = useParams();
 
   const [movie, setMovie] = useState(null);
@@ -56,4 +56,4 @@ export const MovieDetailsPage = () => {
       <Outlet />
     </>
   );
-};
+}

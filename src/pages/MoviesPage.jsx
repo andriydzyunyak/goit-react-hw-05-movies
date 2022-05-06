@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import * as API from 'services/api';
 
-export const MoviesPage = () => {
+export default function MoviesPage() {
   const [movies, setMovies] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
@@ -57,4 +57,4 @@ export const MoviesPage = () => {
       )}
     </>
   );
-};
+}
