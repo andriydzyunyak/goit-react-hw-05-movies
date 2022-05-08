@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import * as API from 'services/api';
+import { MovieReviews } from 'components/MovieReviews/MovieReviews';
 
 export default function Reviews() {
   const { movieId } = useParams();
@@ -29,24 +30,5 @@ export default function Reviews() {
     setReviews(reviewsArray);
   };
 
-  return (
-    <>
-      {reviews && (
-        <>
-          {reviews.length === 0 ? (
-            <p>We don't have any reviews for this movie.</p>
-          ) : (
-            <ul>
-              {reviews.map(review => (
-                <li key={review.id}>
-                  <p>Author: {review.author}</p>
-                  <p>{review.content}</p>
-                </li>
-              ))}
-            </ul>
-          )}
-        </>
-      )}
-    </>
-  );
+  return <>{reviews && <MovieReviews reviews={reviews} />}</>;
 }

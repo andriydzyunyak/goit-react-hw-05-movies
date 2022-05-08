@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import * as API from 'services/api';
+import { MovieCast } from 'components/MovieCast/MovieCast';
 
 export default function Cast() {
   const { movieId } = useParams();
-
   const [actors, setActors] = useState(null);
 
   useEffect(() => {
@@ -31,23 +31,5 @@ export default function Cast() {
     setActors(actorsArray);
   };
 
-  return (
-    <>
-      {actors && (
-        <ul>
-          {actors.map(actor => (
-            <li key={actor.id}>
-              <img
-                src={`https://image.tmdb.org/t/p/w92${actor.profile_path}`}
-                alt={actor.name}
-              />
-              <br />
-              {actor.name}
-              <p>Character: {actor.character}</p>
-            </li>
-          ))}
-        </ul>
-      )}
-    </>
-  );
+  return <>{actors && <MovieCast actors={actors} />}</>;
 }

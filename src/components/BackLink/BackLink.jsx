@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { HiArrowNarrowLeft } from 'react-icons/hi';
 import { GoBack } from 'components/BackLink/BackLink.styled';
+import PropTypes from 'prop-types';
 
 export const BackLink = ({ href, label }) => {
   return (
@@ -9,4 +10,9 @@ export const BackLink = ({ href, label }) => {
       <Link to={href}>{label}</Link>
     </GoBack>
   );
+};
+
+BackLink.propTypes = {
+  href: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
 };

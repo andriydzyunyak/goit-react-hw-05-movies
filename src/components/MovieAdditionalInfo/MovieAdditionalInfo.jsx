@@ -18,7 +18,9 @@ export const MovieAdditionalInfo = () => {
           </LinkItem>
         </li>
         <li>
-          <LinkItem to="reviews">Reviews</LinkItem>
+          <LinkItem to="reviews" state={location.state}>
+            Reviews
+          </LinkItem>
         </li>
       </LinkList>
     </MovieInfoContainer>
