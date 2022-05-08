@@ -1,12 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Layout } from 'components/Layout/Layout';
-//import { HomePage } from 'pages/HomePage';
-//import { MoviesPage } from 'pages/MoviesPage';
-//import { MovieDetailsPage } from 'pages/MovieDetailsPage';
-//import { Cast } from 'pages/Cast';
-//import { Reviews } from 'pages/Reviews';
-//import { NotFoundPage } from 'pages/NotFoundPage';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 const MoviesPage = lazy(() => import('pages/MoviesPage'));

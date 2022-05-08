@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import * as API from 'services/api';
+import { MoviesList } from 'components/MoviesList/MoviesList';
+import { Container } from 'components/Container.styled';
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState(null);
@@ -31,30 +33,20 @@ export default function MoviesPage() {
   }, [query]);
 
   const searchResult = searchMovies => {
-    const searchMoviesArray = searchMovies.results.map(
-      ({ id, original_title }) => ({
-        id,
-        original_title,
-      })
-    );
+    const searchMoviesArray = searchMovies.results.map(({ id, title }) => ({
+      id,
+      title,
+    }));
     setMovies(searchMoviesArray);
   };
 
   return (
-    <>
+    <Container>
       <form onSubmit={handleSubmit}>
         <input name="query" type="text" autoComplete="off" autoFocus />
         <button type="submit">Search</button>
       </form>
-      {movies && (
-        <ul>
-          {movies.map(movie => (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`}>{movie.original_title}</Link>
-            </li>
-          ))}
-        </ul>
-      )}
-    </>
+      {movies && <MoviesList movies={movies} />}
+    </Container>
   );
 }

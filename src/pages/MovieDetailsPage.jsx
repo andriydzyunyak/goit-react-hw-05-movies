@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Outlet, useParams, useLocation } from 'react-router-dom';
 import * as API from 'services/api';
+import { MovieCard } from 'components/MovieCard/MovieCard';
 import { BackLink } from 'components/BackLink/BackLink';
+import { MovieAdditionalInfo } from 'components/MovieAdditionalInfo/MovieAdditionalInfo';
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
-
+  const location = useLocation();
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
     async function fetchMovieById() {
       try {
         const movieDetails = await API.getMovieDetails(movieId);
-        console.log(movieDetails);
         setMovie(movieDetails);
       } catch (error) {
         console.log(error);
@@ -23,36 +24,9 @@ export default function MovieDetailsPage() {
 
   return (
     <>
-      <BackLink href="/" label="Go back" />
-      {movie && (
-        <>
-          <img
-            src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
-            alt={movie.title}
-          />
-          <h2>{movie.title}</h2>
-          <p>User score: {movie.popularity}</p>
-          <p>Overview</p>
-          <p>{movie.overview}</p>
-          <p>
-            Genres:
-            {movie.genres.map(genre => (
-              <p key={genre.id}>{genre.name}</p>
-            ))}
-          </p>
-        </>
-      )}
-      <hr />
-
-      {movie && (
-        <>
-          <p>Additional information</p>
-          <Link to="cast">Cast</Link>
-          <br />
-          <Link to="reviews">Reviews</Link>
-        </>
-      )}
-      <hr />
+      <BackLink href={location?.state?.from ?? '/'} label="Go back" />
+      {movie && <MovieCard movie={movie} />}
+      {movie && <MovieAdditionalInfo />}
       <Outlet />
     </>
   );

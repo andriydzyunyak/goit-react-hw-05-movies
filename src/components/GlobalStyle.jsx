@@ -48,4 +48,9 @@ export const GlobalStyle = css`
   textarea {
     outline: none;
   }
+
+  a {
+    color: #000000;
+    text-decoration: none;
+  }
 `;

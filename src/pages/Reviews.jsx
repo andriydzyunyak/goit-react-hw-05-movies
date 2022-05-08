@@ -4,7 +4,6 @@ import * as API from 'services/api';
 
 export default function Reviews() {
   const { movieId } = useParams();
-
   const [reviews, setReviews] = useState(null);
 
   useEffect(() => {
@@ -27,19 +26,27 @@ export default function Reviews() {
         content,
       })
     );
-
     setReviews(reviewsArray);
   };
 
   return (
-    <ul>
-      {reviews &&
-        reviews.map(review => (
-          <li key={review.id}>
-            <p>Author: {review.author}</p>
-            <p>{review.content}</p>
-          </li>
-        ))}
-    </ul>
+    <>
+      {reviews && (
+        <>
+          {reviews.length === 0 ? (
+            <p>We don't have any reviews for this movie.</p>
+          ) : (
+            <ul>
+              {reviews.map(review => (
+                <li key={review.id}>
+                  <p>Author: {review.author}</p>
+                  <p>{review.content}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+        </>
+      )}
+    </>
   );
 }
