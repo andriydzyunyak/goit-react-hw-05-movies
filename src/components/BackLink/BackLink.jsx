@@ -13,6 +13,6 @@ export const BackLink = ({ href, label }) => {
 };
 
 BackLink.propTypes = {
-  href: PropTypes.string.isRequired,
+  href: PropTypes.object.isRequired,
   label: PropTypes.string.isRequired,
 };

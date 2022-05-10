@@ -13,8 +13,22 @@ export default function MovieDetailsPage() {
   useEffect(() => {
     async function fetchMovieById() {
       try {
-        const movieDetails = await API.getMovieDetails(movieId);
-        setMovie(movieDetails);
+        const {
+          title,
+          poster_path,
+          release_date,
+          vote_average,
+          overview,
+          genres,
+        } = await API.getMovieDetails(movieId);
+        setMovie({
+          title,
+          poster_path,
+          release_date,
+          vote_average,
+          overview,
+          genres,
+        });
       } catch (error) {
         console.log(error);
       }

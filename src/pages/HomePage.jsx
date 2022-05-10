@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import * as API from 'services/api';
-import { Container } from 'components/Container.styled';
+import { Container } from '../Container.styled';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 
 export default function HomePage() {

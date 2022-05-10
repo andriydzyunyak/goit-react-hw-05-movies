@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import * as API from 'services/api';
 import { MoviesList } from 'components/MoviesList/MoviesList';
-import { Container } from 'components/Container.styled';
+import { Container } from '../Container.styled';
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get('query');
+  const query = searchParams.get('query') ?? '';
 
   function handleSubmit(event) {
     event.preventDefault();
