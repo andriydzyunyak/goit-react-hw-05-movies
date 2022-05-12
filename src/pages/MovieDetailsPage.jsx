@@ -1,9 +1,12 @@
-import { useState, useEffect } from 'react';
-import { Outlet, useParams, useLocation } from 'react-router-dom';
+import { lazy, useState, useEffect, Suspense } from 'react';
+import { useParams, useLocation, Routes, Route } from 'react-router-dom';
 import * as API from 'services/api';
 import { MovieCard } from 'components/MovieCard/MovieCard';
 import { BackLink } from 'components/BackLink/BackLink';
 import { MovieAdditionalInfo } from 'components/MovieAdditionalInfo/MovieAdditionalInfo';
+
+const Cast = lazy(() => import('pages/Cast'));
+const Reviews = lazy(() => import('pages/Reviews'));
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
@@ -41,7 +44,12 @@ export default function MovieDetailsPage() {
       <BackLink href={location?.state?.from ?? '/'} label="Go back" />
       {movie && <MovieCard movie={movie} />}
       {movie && <MovieAdditionalInfo />}
-      <Outlet />
+      <Suspense>
+        <Routes>
+          <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews />} />
+        </Routes>
+      </Suspense>
     </>
   );
 }

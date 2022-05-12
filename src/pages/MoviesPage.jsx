@@ -42,8 +42,14 @@ export default function MoviesPage() {
 
   return (
     <Container>
-      <form onSubmit={handleSubmit}>
-        <input name="query" type="text" autoComplete="off" autoFocus />
+      <form onSubmit={handleSubmit} autoComplete="off">
+        <input
+          name="query"
+          type="text"
+          autoComplete="off"
+          autoFocus
+          placeholder={query}
+        />
         <button type="submit">Search</button>
       </form>
       {movies && <MoviesList movies={movies} />}
