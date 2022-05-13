@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 export const MovieCard = ({ movie }) => {
   const { poster_path, title, release_date, vote_average, overview, genres } =
     movie;
+
   return (
     <MovieCardContainer>
       <img src={`https://image.tmdb.org/t/p/w185${poster_path}`} alt={title} />
@@ -31,19 +32,5 @@ export const MovieCard = ({ movie }) => {
 };
 
 MovieCard.propTypes = {
-  movie: PropTypes.objectOf(
-    PropTypes.shape({
-      poster_path: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      release_date: PropTypes.string.isRequired,
-      vote_average: PropTypes.number.isRequired,
-      overview: PropTypes.string.isRequired,
-    })
-  ),
-  genres: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-    })
-  ),
+  movie: PropTypes.object,
 };

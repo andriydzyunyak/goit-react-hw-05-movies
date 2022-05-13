@@ -24,13 +24,14 @@ export default function MovieDetailsPage() {
           overview,
           genres,
         } = await API.getMovieDetails(movieId);
+
         setMovie({
-          title,
+          genres,
           poster_path,
+          title,
           release_date,
           vote_average,
           overview,
-          genres,
         });
       } catch (error) {
         console.log(error);
